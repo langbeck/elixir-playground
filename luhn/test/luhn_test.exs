@@ -3,7 +3,7 @@ defmodule LuhnTest do
   doctest Luhn
 
   test "well formatted cases" do
-    test_lugh_generate [
+    test_luhn_generate [
       {"37828224631000", 5},
       {"37144963539843", 1},
       {"37873449367100", 0},
@@ -13,7 +13,7 @@ defmodule LuhnTest do
   end
 
   test "invalid digits" do
-    test_lugh_generate [
+    test_luhn_generate [
       {".123456", :error},
       {"123456.", :error},
       {"-123456", :error},
@@ -29,7 +29,7 @@ defmodule LuhnTest do
   end
 
   test "with spaces" do
-    test_lugh_generate [
+    test_luhn_generate [
       {" 123456", :error},
       {"1 23456", :error},
       {"12 3456", :error},
@@ -43,7 +43,7 @@ defmodule LuhnTest do
     ]
   end
 
-  defp test_lugh_generate(cases) do
+  defp test_luhn_generate(cases) do
     cases
     |> Stream.map(fn {n, dig} -> assert Luhn.generate(n) == dig end)
     |> Stream.run()
