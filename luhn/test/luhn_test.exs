@@ -73,10 +73,10 @@ defmodule LuhnTest do
   end
 
   defp test_luhn_generate(cases) do
-    cases |> Enum.each(fn {n, dig} -> assert Luhn.generate(n) == dig end)
+    Enum.each(cases, fn {n, dig} -> assert Luhn.generate(n) == dig end)
   end
 
   defp test_luhn_verify(cases) do
-    cases |> Enum.each(fn {n, status} -> assert Luhn.verify(n) == status end)
+    Enum.each(cases, fn {n, status} -> assert Luhn.verify(n) == status end)
   end
 end
