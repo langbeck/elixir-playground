@@ -73,14 +73,10 @@ defmodule LuhnTest do
   end
 
   defp test_luhn_generate(cases) do
-    cases
-    |> Stream.map(fn {n, dig} -> assert Luhn.generate(n) == dig end)
-    |> Stream.run()
+    cases |> Enum.each(fn {n, dig} -> assert Luhn.generate(n) == dig end)
   end
 
   defp test_luhn_verify(cases) do
-    cases
-    |> Stream.map(fn {n, status} -> assert Luhn.verify(n) == status end)
-    |> Stream.run()
+    cases |> Enum.each(fn {n, status} -> assert Luhn.verify(n) == status end)
   end
 end
